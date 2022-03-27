@@ -108,6 +108,9 @@ public class PantallaGenerador {
         colFrecuenciaObservada.setCellValueFactory(new PropertyValueFactory<Intervalo,Integer>("frecuenciaObservada"));
         colFrecuenciaEsperada.setCellValueFactory(new PropertyValueFactory<Intervalo,Integer>("frecuenciaEsperada"));
 
+        tblIntervalos.getColumns().addAll(colDesde,colHasta,colFrecuenciaObservada,colFrecuenciaEsperada);
+
+        tblIntervalos.getItems().addAll(intervalos);
 
     }
 }
