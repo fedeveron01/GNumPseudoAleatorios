@@ -30,4 +30,16 @@ public class Linea
     public void setLineaAnterior(Linea lineaAnterior) {
         this.lineaAnterior = lineaAnterior;
     }
+
+    public int getI() {
+        return i;
+    }
+
+    public int getXi() {
+        return xi;
+    }
+
+    public double getRND() {
+        return RND;
+    }
 }
