@@ -35,4 +35,11 @@ public class PantallaGenerador {
 
         welcomeText.setText("Welcome to JavaFX Application!");
     }
+
+    public void generarCongruencialMultiplicativo(ActionEvent actionEvent) {
+        int x0 = Integer.parseInt(this.x0.getText());
+        int k = Integer.parseInt(this.k.getText());
+        int g = Integer.parseInt(this.g.getText());
+        controladorGenerador = new ControladorGenerador(x0,k,g);
+    }
 }
