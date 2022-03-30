@@ -5,8 +5,13 @@ import com.example.tp1sim.Modelos.Intervalo;
 import com.example.tp1sim.Modelos.Linea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.StackedBarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,13 +29,21 @@ public class PantallaGenerador {
     @FXML
     private TextField n;
     @FXML
+    private GridPane GPventana;
+    @FXML
     private TableView tblGenerador;
     @FXML
     private TableView tblIntervalos;
-
-
     @FXML
-    private ChoiceBox cbIntervalos;
+    private StackedBarChart sbcHistograma;
+    @FXML
+    private NumberAxis frecuenciasChar;
+    @FXML
+    private CategoryAxis idClases;
+
+
+
+
 
     private ControladorGenerador controladorGenerador;
 
@@ -84,7 +97,7 @@ public class PantallaGenerador {
 
     }
     public void ponerLinea(Linea linea) {
-     ;
+        ;
 
         tblGenerador.getItems().add(linea);
 
@@ -102,15 +115,36 @@ public class PantallaGenerador {
         TableColumn<Intervalo,Double> colHasta = new TableColumn<>("hasta");
         TableColumn<Intervalo,Integer> colFrecuenciaObservada = new TableColumn<>("frecuenciaObservada");
         TableColumn<Intervalo,Integer> colFrecuenciaEsperada = new TableColumn<>("frecuenciaEsperada");
+        TableColumn<Intervalo,Double> colC = new TableColumn<>("c");
+        TableColumn<Intervalo,Double> colCAcumulado = new TableColumn<>("cAcumulado");
+
 
         colDesde.setCellValueFactory(new PropertyValueFactory<Intervalo,Double>("desde"));
         colHasta.setCellValueFactory(new PropertyValueFactory<Intervalo,Double>("hasta"));
         colFrecuenciaObservada.setCellValueFactory(new PropertyValueFactory<Intervalo,Integer>("frecuenciaObservada"));
         colFrecuenciaEsperada.setCellValueFactory(new PropertyValueFactory<Intervalo,Integer>("frecuenciaEsperada"));
+        colC.setCellValueFactory(new PropertyValueFactory<Intervalo,Double>("c"));
+        colCAcumulado.setCellValueFactory(new PropertyValueFactory<Intervalo,Double>("cAcumulado"));
 
-        tblIntervalos.getColumns().addAll(colDesde,colHasta,colFrecuenciaObservada,colFrecuenciaEsperada);
+        tblIntervalos.getColumns().addAll(colDesde,colHasta,colFrecuenciaObservada,colFrecuenciaEsperada,colC,colCAcumulado);
 
         tblIntervalos.getItems().addAll(intervalos);
 
     }
+
+    public void generarHistograma(ArrayList<Intervalo> intervalos){
+        final XYChart.Series<String,Number> series1 = new XYChart.Series<>();
+        series1.setName("frecuencia observada");
+        /**
+        final XYChart.Series<String,Number> series2 = new XYChart.Series<>();
+        series2.setName("frecuencia Observada");
+         */
+        for (Intervalo intervalo:intervalos) {
+            series1.getData().add(new XYChart.Data<>(String.valueOf(intervalo.getMarcaDeClase()),intervalo.getFrecuenciaObservada()));
+
+        }
+        sbcHistograma.getData().clear();
+        sbcHistograma.getData().addAll(series1);
+    }
+
 }

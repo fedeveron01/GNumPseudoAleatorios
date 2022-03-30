@@ -1,64 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tp1sim.Pantallas.PantallaGenerador">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="410.0" minWidth="10.0" prefWidth="410.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="190.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="947.0" prefWidth="1530.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tp1sim.Pantallas.PantallaGenerador">
    <children>
-      <Label text="x0 : ">
-         <GridPane.margin>
-            <Insets left="10.0" />
-         </GridPane.margin>
-      </Label>
-      <TextField maxWidth="30.0" fx:id="x0">
-         <GridPane.margin>
-            <Insets left="40.0" />
-         </GridPane.margin>
-      </TextField>
-      <TextField fx:id="k" maxWidth="30.0">
-         <GridPane.margin>
-            <Insets left="150.0" />
-         </GridPane.margin>
-      </TextField>
-      <TextField fx:id="g" maxWidth="30.0">
-         <GridPane.margin>
-            <Insets left="250.0" />
-         </GridPane.margin>
-      </TextField>
-      <TextField fx:id="c" maxWidth="30.0">
-         <GridPane.margin>
-            <Insets left="350.0" />
-         </GridPane.margin>
-      </TextField>
-      <Label text="k:">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <GridPane.margin>
-            <Insets left="130.0" />
-         </GridPane.margin>
-      </Label>
-      <Label text="g:">
-         <GridPane.margin>
-            <Insets left="230.0" />
-         </GridPane.margin>
-      </Label>
-      <Label text="c:">
-         <GridPane.margin>
-            <Insets left="330.0" />
-         </GridPane.margin>
-      </Label>
-      <Button fx:id="btnCongruencialLineal" mnemonicParsing="false" onAction="#generarCongruencialLineal" text="Button" GridPane.rowIndex="1" />
-      <Button fx:id="btnCongruencialMultiplicativo" mnemonicParsing="false" onAction="#generarCongruencialMultiplicativo" text="Congruencial Multiplicativo" GridPane.rowIndex="2" />
+      <Label layoutX="14.0" layoutY="30.0" text="x0:" />
+      <Label layoutX="76.0" layoutY="30.0" text="k:" />
+      <Label layoutX="133.0" layoutY="30.0" text="g:" />
+      <Label layoutX="193.0" layoutY="30.0" text="c:" />
+      <Label layoutX="257.0" layoutY="30.0" text="n:" />
+      <TextField layoutX="35.0" layoutY="26.0" prefHeight="25.0" prefWidth="28.0" fx:id="x0" />
+      <TextField fx:id="k" layoutX="92.0" layoutY="26.0" prefHeight="25.0" prefWidth="28.0" />
+      <TextField fx:id="g" layoutX="152.0" layoutY="26.0" prefHeight="25.0" prefWidth="28.0" />
+      <TextField fx:id="c" layoutX="211.0" layoutY="26.0" prefHeight="25.0" prefWidth="28.0" />
+      <TextField fx:id="n" layoutX="272.0" layoutY="26.0" prefHeight="25.0" prefWidth="28.0" />
+      <Button layoutX="25.0" layoutY="68.0" mnemonicParsing="false" onAction="#generarCongruencialLineal" text="Congruencial Lineal" />
+      <Button layoutX="26.0" layoutY="106.0" mnemonicParsing="false" onAction="#generarCongruencialMultiplicativo" text="Congruencial Multiplicativo" />
+      <TableView fx:id="tblGenerador" layoutX="20.0" layoutY="153.0" prefHeight="241.0" prefWidth="291.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tblIntervalos" layoutX="330.0" layoutY="153.0" prefHeight="241.0" prefWidth="337.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <StackedBarChart fx:id="sbcHistograma" layoutX="15.0" layoutY="417.0" maxHeight="200.0" maxWidth="800.0" prefHeight="400.0" prefWidth="1500.0" title="Histograma de Frecuencias">
+        <xAxis>
+          <CategoryAxis fx:id="idClases" endMargin="50.0" label="MarcaClase" side="BOTTOM" startMargin="50.0" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="frecuanciasChar" label="Frecuencia" side="LEFT" />
+        </yAxis>
+      </StackedBarChart>
    </children>
-</GridPane>
+</Pane>

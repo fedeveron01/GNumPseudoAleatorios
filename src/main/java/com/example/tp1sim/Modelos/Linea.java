@@ -20,7 +20,7 @@ public class Linea
     }
     public void setRND(double RND)
     {
-            this.RND= RND;
+        this.RND= RND;
     }
 
     public int getXiSiguiente() {
@@ -43,3 +43,4 @@ public class Linea
         return RND;
     }
 }
+

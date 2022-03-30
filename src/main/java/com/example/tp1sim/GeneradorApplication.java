@@ -11,7 +11,7 @@ public class GeneradorApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GeneradorApplication.class.getResource("pantalla-generador.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 1100, 500);
         stage.setTitle("TP1 Generador numeros pseudo aleatorios");
         stage.setScene(scene);
         stage.show();
