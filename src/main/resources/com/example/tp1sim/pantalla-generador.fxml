@@ -30,7 +30,7 @@
           <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
-      <StackedBarChart fx:id="sbcHistograma" layoutX="15.0" layoutY="417.0" maxHeight="200.0" maxWidth="800.0" prefHeight="400.0" prefWidth="1500.0" title="Histograma de Frecuencias">
+      <StackedBarChart fx:id="sbcHistograma" layoutX="15.0" layoutY="417.0" maxHeight="304.0" maxWidth="800.0" prefHeight="304.0" prefWidth="800.0" title="Histograma de Frecuencias">
         <xAxis>
           <CategoryAxis fx:id="idClases" endMargin="50.0" label="MarcaClase" side="BOTTOM" startMargin="50.0" />
         </xAxis>
@@ -38,5 +38,9 @@
           <NumberAxis fx:id="frecuanciasChar" label="Frecuencia" side="LEFT" />
         </yAxis>
       </StackedBarChart>
+      <Label layoutX="737.0" layoutY="153.0" text="ChiCuadrado" />
+      <Label layoutX="737.0" layoutY="185.0" text="Nivel de Significancia: 0.95" />
+      <Label layoutX="737.0" layoutY="220.0" text="La distribucion " />
+      <Label fx:id="lblRechazar" layoutX="849.0" layoutY="220.0" />
    </children>
 </Pane>

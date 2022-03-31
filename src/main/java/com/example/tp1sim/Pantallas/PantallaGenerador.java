@@ -40,6 +40,8 @@ public class PantallaGenerador {
     private NumberAxis frecuenciasChar;
     @FXML
     private CategoryAxis idClases;
+    @FXML
+    private Label lblRechazar;
 
 
 
@@ -140,11 +142,18 @@ public class PantallaGenerador {
         series2.setName("frecuencia Observada");
          */
         for (Intervalo intervalo:intervalos) {
-            series1.getData().add(new XYChart.Data<>(String.valueOf(intervalo.getMarcaDeClase()),intervalo.getFrecuenciaObservada()));
+            series1.getData().add(new XYChart.Data<>(intervalo.getMarcaDeClase(),intervalo.getFrecuenciaObservada()));
 
         }
         sbcHistograma.getData().clear();
         sbcHistograma.getData().addAll(series1);
+    }
+
+    public void chiCuadrado(boolean rechazar){
+        if (rechazar)
+            lblRechazar.setText("Se rechaza");
+        else
+            lblRechazar.setText("No se rechaza");
     }
 
 }

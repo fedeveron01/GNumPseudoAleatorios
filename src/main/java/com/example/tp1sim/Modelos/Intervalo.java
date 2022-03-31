@@ -1,4 +1,5 @@
 package com.example.tp1sim.Modelos;
+import java.text.DecimalFormat;
 
 public class Intervalo {
     private double desde;
@@ -7,14 +8,18 @@ public class Intervalo {
     private int frecuenciaEsperada;
     private double c;
     private double cAcumulado;
-    private double marcaDeClase;
+    private String marcaDeClase;
 
     public Intervalo(double desde,double hasta,int frecuenciaEsperada){
         this.desde =desde;
         this.hasta = hasta;
         this.frecuenciaEsperada = frecuenciaEsperada;
-        var marca = (double) ((hasta + desde)/2);
-        this.marcaDeClase = marca;
+        double marca = (double) ((hasta + desde)/2);
+        String pattern ="#.####";
+        DecimalFormat decimalFormat =  new DecimalFormat(pattern);
+        String formattedDouble = decimalFormat.format(marca);
+
+        this.marcaDeClase = formattedDouble;
 
     }
     public double getDesde() {
@@ -49,11 +54,11 @@ public class Intervalo {
         this.frecuenciaEsperada = frecuenciaEsperada;
     }
 
-    public double getMarcaDeClase() {
+    public String getMarcaDeClase() {
         return marcaDeClase;
     }
 
-    public void setMarcaDeClase(double marcaDeClase) {
+    public void setMarcaDeClase(String marcaDeClase) {
         this.marcaDeClase = marcaDeClase;
     }
 

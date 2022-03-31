@@ -17,25 +17,28 @@ public class ControladorGenerador {
     public ControladorGenerador(int x0, int k, int g, int c, int n, PantallaGenerador pantalla) {
         this.generarIntervalos(10, n);
         this.generarLineal(x0, k, g, c, n, pantalla);
-        this.calcularChiCuadrado();
+        boolean rechazar;
+        pantalla.chiCuadrado(this.calcularChiCuadrado());
         pantalla.mostrarIntervalos(this.intervalos);
 
 
     }
 
-    private void calcularChiCuadrado() {
+    private boolean calcularChiCuadrado() {
         double cAcumulado = 0.0;
+        boolean rechazar = true;
         for(var i=0;i<this.intervalos.size();i++){
             var fo = this.intervalos.get(i).getFrecuenciaObservada();
             var fe = this.intervalos.get(i).getFrecuenciaEsperada();
             var c = (double) Math.pow((fo-fe),2) / (fe);
             cAcumulado += c;
-
             this.intervalos.get(i).setC(c);
             this.intervalos.get(i).setCAcumulado(cAcumulado);
-
-
         }
+        if (cAcumulado < 5.99){
+            rechazar=false;
+        }
+        return rechazar;
     }
 
     //congruencial mutipicativo
@@ -43,7 +46,8 @@ public class ControladorGenerador {
         this.generarIntervalos(10, n);
         this.generarMultiplicativo(x0, k, g, n, pantalla);
         pantalla.mostrarIntervalos(this.intervalos);
-        this.calcularChiCuadrado();
+        boolean rechazar;
+        pantalla.chiCuadrado(this.calcularChiCuadrado());
 
 
 
@@ -113,6 +117,7 @@ public class ControladorGenerador {
             for (Intervalo intervalo : intervalos) {
                 if (linea.getRND() >= intervalo.getDesde() && linea.getRND() <= intervalo.getHasta()) {
                     intervalo.setFrecuenciaObservada(intervalo.getFrecuenciaObservada() + 1);
+                    break;
                 }
             }
             pantalla.ponerLinea(linea);

@@ -20,7 +20,7 @@ public class CongruencialLineal
 
     public int generarXiSiguiente(int xi)
     {
-        return ( a * xi + this.c ) % this.m;
+        return ( this.a * xi + this.c ) % this.m;
 
     }
 
